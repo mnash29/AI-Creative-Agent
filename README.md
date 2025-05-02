@@ -37,6 +37,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Clerk Authentication
 
-## Schematic HQ
+This app uses [Clerk](https://clerk.com) for authentication. Create an account and follow the docs to create an application and import necessary files.
+
+## Schematic
+
+This app uses [SchematicHQ](https://schematichq.com) for handling pricing and metering, plans & enhancements, smart flags, billing components, etc.
 
 ## Convex 

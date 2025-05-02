@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+
 import "./globals.css";
+import ClientWrapper from "@/components/client-wrapper";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <ClientWrapper>{children}</ClientWrapper>
       </body>
     </html>
   );
