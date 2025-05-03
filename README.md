@@ -41,6 +41,42 @@ This app uses [Clerk](https://clerk.com) for authentication. Create an account a
 
 ## Schematic
 
-This app uses [SchematicHQ](https://schematichq.com) for handling pricing and metering, plans & enhancements, smart flags, billing components, etc.
+This app uses [SchematicHQ](https://schematichq.com) for handling pricing and metering, plans & enhancements, smart flags, billing components, etc. which uses [Stripe](https://stripe.com) under the hood.
 
+### Setup
+
+1. Create `Schematic` account.
+2. Create/Connect your `Stripe` account.
+    * `Integrations` > `Stripe Integration` > `Connect Stripe`
+    * Fill out all required business information
+3. Create a `product` in Stripe
+    * `Product Catalog` > `Add product`
+    * Create one product for each plan tier
+        * Free
+        * Starter - $9.99 monthly
+        * Creator - $29.99 monthly
+    * Optional: Create annual plans for each paid product
+        * Select product
+        * Add new pricing by clicking `+`
+        * Set `interval` to `Yearly`
+4. Import new data in `Schematic`
+    * `Integrations` > `Stripe Integration` > `Import new data`
+5. Create `Catalog plan`
+    * `Catalog` > `Create plan`
+    * Define a plan for each `product` in Stripe
+        * Default type is `Free` in `Billing`
+        * Select `Paid` in billing for any paid products
+6. Add `Entitlements` for each plan that enables certain `features` available for each product.
+    * Define a `Feature` to unlock plan entitlements, overrides, and track feature utilization
+        * `Feature` > `Create a feature`
+        * Set access control type
+            * `Boolean` features are On or Off, example: Single Sign On
+            * `Event-based` features are defined by behavior, example: Search or Query
+            * `Trait-based` features are defined by Company or User trait, example: Seats
+        * Set a flag for targeting on the backend
+        * Set an `event` if using event-based type
+    * Set `entitlements` for each `feature`
+        * `Features` > `Add plan entitlement`
+7. Create `Components` like a `Customer Portal` for displaying billing information at checkout
+8. Embed the components into the app. See [Docs](https://docs.schematichq.com/components/set-up)
 ## Convex 

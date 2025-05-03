@@ -1,6 +1,7 @@
 "use client";
 
 import { ClerkProvider } from "@clerk/nextjs";
+import Header from "./header";
 
 export default function ClientWrapper({
   children,
@@ -8,6 +9,9 @@ export default function ClientWrapper({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>{children}</ClerkProvider>
+    <ClerkProvider>
+      <Header />
+      {children}
+    </ClerkProvider>
   );
 }
