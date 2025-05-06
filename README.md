@@ -79,4 +79,52 @@ This app uses [SchematicHQ](https://schematichq.com) for handling pricing and me
         * `Features` > `Add plan entitlement`
 7. Create `Components` like a `Customer Portal` for displaying billing information at checkout
 8. Embed the components into the app. See [Docs](https://docs.schematichq.com/components/set-up)
+
+### Integration
+
+```bash
+# Install dependencies
+npm install @schematichq/schematic-react
+# or
+yarn add @schematichq/schematic-react
+# or
+pnpm add @schematichq/schematic-react
+```
+
+Setup `SchematicProvider`
+
+```tsx
+// app/page.tsx
+`use client`
+
+import { SchematicProvider } from "@schematichq/schematic-react";
+
+ReactDOM.render(
+    <SchematicProvider publishableKey="your-publishable-key">
+        <App />
+    </SchematicProvider>,
+    document.getElementById("root"),
+);
+```
+
+```tsx
+// components/schematic-wrapper.tsx
+import { useSchematicEvents } from "@schematichq/schematic-react";
+
+const SchematicWrapper = ({children}: {children: React.ReactNode}) => {
+  const { identify } = useSchematicEvents();
+
+  useEffect(() => {
+    identify({
+      company: {
+        keys: { id: "company123" },
+      },
+    });
+  }, [identify]);
+
+  return childrem;
+};
+
+```
+
 ## Convex 
